@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movpass/bloc/personal_trainers_list_bloc.dart';
+import 'package:movpass/widgets/lists_widgets.dart';
 
 class PersonalTrainersList extends StatefulWidget {
   @override
@@ -22,21 +24,30 @@ class _PersonalTrainersListState extends State<PersonalTrainersList> {
       body: StreamBuilder<List>(
           stream: bloc.personalTrainers,
           builder: (context, snapshot) {
-            if (snapshot.hasError || !snapshot.hasData) {
-              // Show user message
-              return Container(
-                child: Text('Show user message'),
+            if (!snapshot.hasData) {
+              // Show an progress indicator
+              return Center(
+                child: myCircularProgressIndicator(),
               );
+            } else if (snapshot.hasError) {
+              // Show an error message
+              return buildMessage('Show user message');
             } else if (snapshot.data.isEmpty) {
               // Show message of empty list
-              return Container(
-                child: Text('Show message of empty list'),
-              );
+              return buildMessage('Show message of empty list');
             } else {
               // Show list
-              return Container(
-                child: Text('Show list'),
-              );
+              return myList(snapshot.data.length,
+                  itemBuilder: (context, index) =>
+                      myListCard(snapshot.data[index]['name'], onTap: () {
+                        // Push to personal trainer details by id
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) {
+                            //TODO
+                            return;
+                          },
+                        ));
+                      }));
             }
           }),
     );

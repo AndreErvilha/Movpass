@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:dio/dio.dart';
 import 'package:movpass/api/api.dart';
