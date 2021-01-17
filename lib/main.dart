@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movpass/config/colors.dart';
 import 'package:movpass/screens/home.dart';
 
 void main() {
@@ -11,9 +12,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          // Set the appbar theme once
+          appBarTheme: AppBarTheme(
+            color: primaryColor,
+            centerTitle: false,
+          )),
       home: Home(),
     );
   }

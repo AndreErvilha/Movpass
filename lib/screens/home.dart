@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movpass/colors.dart';
+import 'package:movpass/screens/personal_trainers_list.dart';
 import 'package:movpass/widgets/buttons.dart';
 
 class Home extends StatefulWidget {
@@ -11,10 +11,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Movpass'),
-        backgroundColor: primaryColor,
-      ),
+      appBar: AppBar(title: Text('Movpass')),
       drawer: buildDrawer(context),
       body: buildBody(),
     );
@@ -36,8 +33,14 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            simpleButton('Treinadores', onTap: () {}),
-            simpleButton('Modalidades', onTap: () {}),
+            simpleButton('Treinadores', onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => PersonalTrainersList()));
+            }),
+            simpleButton('Modalidades', onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => PersonalTrainersList()));
+            }),
           ],
         ),
       );

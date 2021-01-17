@@ -8,7 +8,12 @@ class Api {
     this._http = Dio(BaseOptions(
       baseUrl: base_url,
       contentType: 'application/json',
-      validateStatus: (int statusCode) => statusCode>=200 && statusCode<300,
+      // Note: On last review of Dio plugin (3.0.10) was implemented an
+      // automatic parse the data to "Map" Object when "responseType" parameter
+      // were "ResponseType.json", to avoid this is needed set "responseType"
+      // as "ResponseType.plain".
+      responseType: ResponseType.plain,
+      validateStatus: (int statusCode) => statusCode >= 200 && statusCode < 300,
       receiveTimeout: 5000,
       sendTimeout: 5000,
       connectTimeout: 5000,
@@ -24,8 +29,9 @@ class Api {
   }
 
   Future<Response> get(String path, {Map<dynamic, dynamic> queryParameters}) async {
-    return await _http
-        .get(base_url+path, queryParameters: queryParameters)
+    Response res = await _http
+        .get(base_url + path, queryParameters: queryParameters)
         .catchError(onError);
+    return res;
   }
 }

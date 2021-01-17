@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../colors.dart';
+import 'package:movpass/config/colors.dart';
 
 Widget simpleButton(String buttonText, {Function onTap, fontSize = 24.0}) {
   return Container(
