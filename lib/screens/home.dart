@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movpass/config/colors.dart';
 import 'package:movpass/screens/modalities_list.dart';
 import 'package:movpass/screens/personal_trainers_list.dart';
 import 'package:movpass/widgets/buttons.dart';
@@ -15,6 +16,18 @@ class _HomeState extends State<Home> {
       appBar: AppBar(title: Text('Movpass')),
       drawer: buildDrawer(context),
       body: buildBody(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: primaryColor,
+        child: Icon(Icons.message),
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: Text('Mensagem de alerta'),
+                    content: Text('Descrição do alerta'),
+                  ));
+        },
+      ),
     );
   }
 
