@@ -56,24 +56,27 @@ Container myList(int itemCount,
             itemBuilder: itemBuilder));
 
 Container myDataLabeled(String label, String data,
-    {EdgeInsets padding, TextStyle labelTextStyle, TextStyle dataTextStyle}) {
+    {EdgeInsets padding,
+    TextStyle labelTextStyle,
+    TextStyle dataTextStyle,
+    int dataMaxLines = 1}) {
   return Container(
-    padding: padding ?? EdgeInsets.symmetric(horizontal: 10),
-    child: Row(
-      children: [
-        Text(
-          label,
-          overflow: TextOverflow.ellipsis,
-          style: labelTextStyle ??
+    width: double.infinity,
+    padding: padding ?? EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+    child: Text.rich(
+      TextSpan(
+          text: label + ' ',
+          style: dataTextStyle ??
               TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(width: 10),
-        Expanded(
-            child: Text(data,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: dataTextStyle ?? TextStyle(fontSize: 16))),
-      ],
+          children: [
+            TextSpan(
+                text: data,
+                style: dataTextStyle ??
+                    TextStyle(fontSize: 16, fontWeight: FontWeight.normal))
+          ]),
+      overflow: TextOverflow.ellipsis,
+      maxLines: 2,
+      style: labelTextStyle ?? TextStyle(fontSize: 16),
     ),
   );
 }

@@ -42,6 +42,7 @@ class _ModalitiesListState extends State<ModalitiesList> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   myDataLabeled('Lista de modalidades', '',
+                      padding: EdgeInsets.all(10),
                       labelTextStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Padding(

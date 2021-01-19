@@ -55,7 +55,7 @@ class _PersonalTrainersDetailsState extends State<PersonalTrainersDetails> {
                         myDataLabeled('Detalhes do treinador', '',
                             labelTextStyle: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
-                        SizedBox(height: 5),
+                        SizedBox(height: 10),
                         myDataLabeled(
                             'cref:', snapshot.data['cref'].toString()),
                         myDataLabeled('nome:', snapshot.data['name']),
@@ -65,6 +65,7 @@ class _PersonalTrainersDetailsState extends State<PersonalTrainersDetails> {
                   ),
                   SizedBox(height: 5),
                   myDataLabeled('Modalidades', '',
+                      padding: EdgeInsets.all(10),
                       labelTextStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Padding(
@@ -77,8 +78,9 @@ class _PersonalTrainersDetailsState extends State<PersonalTrainersDetails> {
                                 snapshot.data['modalities'][index]['label'],
                                 snapshot.data['modalities'][index]
                                     ['description'],
-                                snapshot.data['modalities'][index]['duration']
-                                    .toString(), onTap: () {
+                            snapshot.data['modalities'][index]['duration']
+                                .toString() + ' min'
+                                .toString(), onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
                                       ModalitiesDetails(snapshot.data['id'])));

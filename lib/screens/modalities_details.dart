@@ -50,21 +50,23 @@ class _ModalitiesDetailsState extends State<ModalitiesDetails> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        myDataLabeled('Detalhes do treinador', '',
+                        myDataLabeled('Detalhes da modalidade', '',
                             labelTextStyle: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
-                        SizedBox(height: 5),
-                        myDataLabeled('modalidade:', snapshot.data['label']),
+                        SizedBox(height: 10),
+                        myDataLabeled('modalidade:', snapshot.data['label'],
+                            dataMaxLines: 2),
                         myDataLabeled(
-                            'descrição:', snapshot.data['description']),
-                        myDataLabeled(
-                            'duração:', snapshot.data['duration'].toString())
+                            'descrição:', snapshot.data['description'],
+                            dataMaxLines: 3),
+                        myDataLabeled('duração:',
+                            snapshot.data['duration'].toString() + ' min')
                       ],
                     ),
                   ),
                   SizedBox(height: 5),
                   Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: EdgeInsets.all(10),
                       alignment: Alignment.centerLeft,
                       child: Text('Treinadores que oferecem essa modalidade:',
                           overflow: TextOverflow.ellipsis,

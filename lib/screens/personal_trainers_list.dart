@@ -42,6 +42,7 @@ class _PersonalTrainersListState extends State<PersonalTrainersList> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   myDataLabeled('Lista de treinadores', '',
+                      padding: EdgeInsets.all(10),
                       labelTextStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   Padding(
