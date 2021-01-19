@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Movpass',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
           // Set the appbar theme once
