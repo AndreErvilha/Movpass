@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movpass/bloc/personal_trainers_details_bloc.dart';
-import 'package:movpass/bloc/personal_trainers_list_bloc.dart';
 import 'package:movpass/config/colors.dart';
+import 'package:movpass/screens/modalities_details.dart';
 import 'package:movpass/widgets/lists_widgets.dart';
 
 class PersonalTrainersDetails extends StatefulWidget {
@@ -74,11 +74,15 @@ class _PersonalTrainersDetailsState extends State<PersonalTrainersDetails> {
                   Expanded(
                     child: myList(snapshot.data['modalities'].length,
                         itemBuilder: (context, index) => myDataDetails(
-                              snapshot.data['modalities'][index]['label'],
-                              snapshot.data['modalities'][index]['description'],
-                              snapshot.data['modalities'][index]['duration']
-                                  .toString(),
-                            )),
+                                snapshot.data['modalities'][index]['label'],
+                                snapshot.data['modalities'][index]
+                                    ['description'],
+                                snapshot.data['modalities'][index]['duration']
+                                    .toString(), onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      ModalitiesDetails(snapshot.data['id'])));
+                            })),
                   ),
                 ],
               );

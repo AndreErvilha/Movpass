@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movpass/screens/modalities_list.dart';
 import 'package:movpass/screens/personal_trainers_list.dart';
 import 'package:movpass/widgets/buttons.dart';
 
@@ -38,8 +39,8 @@ class _HomeState extends State<Home> {
                   builder: (context) => PersonalTrainersList()));
             }),
             simpleButton('Modalidades', onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => PersonalTrainersList()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ModalitiesList()));
             }),
           ],
         ),
